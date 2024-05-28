@@ -58,7 +58,7 @@ $stage = $query-> fetchAll(PDO::FETCH_ASSOC);
             </td>
         </tr>
         <?php
-        }
+        endforeach; // remplace l'accolade fermante
         ?>
         
     <tbody>

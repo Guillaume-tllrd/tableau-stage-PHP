@@ -15,7 +15,7 @@ if ($_POST) { // Vérifie si le formulaire a été soumis en utilisant la métho
         ) {
         require_once("connect.php");
 
-        $id = strip_tags($_POST["id"]);
+        $id = strip_tags($_POST["id"]); // strip_tags est une sécurité qui permet de ne pas prendre en compte les balises HTML si jamais elles sont incrites dans le SQL
         $statut_de_la_recherche = strip_tags($_POST["statut_de_la_recherche"]);
         $nom_de_lentreprise = strip_tags($_POST["nom_de_lentreprise"]);
         $date_denvoi = strip_tags($_POST["date_denvoi"]);
@@ -30,8 +30,8 @@ if ($_POST) { // Vérifie si le formulaire a été soumis en utilisant la métho
         $sql = "UPDATE stage SET statut_de_la_recherche = :statut_de_la_recherche, nom_de_lentreprise = :nom_de_lentreprise, date_denvoi = :date_denvoi, date_de_relance = :date_de_relance, type_de_postulation = :type_de_postulation, methode_de_postulation = :methode_de_postulation, intitule_du_poste = :intitule_du_poste, type_de_contrat = :type_de_contrat, email = :email, commentaires = :commentaires WHERE id = :id";
 
         $query = $db->prepare($sql);
-        $query -> bindValue(":id", $id, PDO::PARAM_INT);
-        $query->bindValue(":statut_de_la_recherche", $statut_de_la_recherche);
+        $query -> bindValue(":id", $id, PDO::PARAM_INT); // , PDO permet de protéger contrre les injections SQL paramètre integer sinon cest en string par défault
+        $query->bindValue(":statut_de_la_recherche", $statut_de_la_recherche); // bindValue sert à protéger
         $query->bindValue(":nom_de_lentreprise", $nom_de_lentreprise); 
         $query->bindValue(":date_denvoi", $date_denvoi);
         $query->bindValue(":date_de_relance", $date_de_relance);
