@@ -8,7 +8,8 @@
 <body>
     <form action="create.php" method="post">
 
-        <select name="statut" id="statut">
+        <select name="statut_de_la_recherche" id="statut">
+            <option value="statut de la recherche">statut de la recherche</option>
             <option value="a postulé">a postulé</option>
             <option value="ne correpond pas">ne correpond pas</option>
             <option value="entretien">entretien</option>
@@ -16,42 +17,50 @@
             <option value="pas de réponse">pas de réponse</option>
         </select>
 
-        <label for="nom de l'entreprise">nom de l'entreprise</label>
-        <input type="text" name="nom de l'entreprise">
+        <label for="nom_de_lentreprise">nom de l'entreprise</label>
+        <input type="text" name="nom_de_lentreprise">
 
-        <label for="date d'envoi">date d'envoi</label>
-        <input type="date" name="date d'envoi">
+        <label for="date_denvoi">date d'envoi</label>
+        <input type="date" name="date_denvoi">
 
-        <label for="date de relance">date de relance(j+7)</label>
-        <input type="date" name="date de relance">
+        <label for="date_de_relance">date de relance(j+7)</label>
+        <input type="date" name="date_de_relance">
 
-        <select name="type" id="type">
+        <select name="type_de_postulation" id="type_de_postulation">
+            <option value="type de postulation">type de postulation</option>
             <option value="spontanée">spontanée</option>
             <option value="réponse à une offre">réponse à une offre</option>
             <option value="recommandation">recommandation</option>
             <option value="sollicitation directe">sollicitation directe</option>
         </select>
 
-        <select name="méthode" id="">
+        <select name="methode_de_postulation" id="">
+            <option value="méthode de postulation">méthode de postulation</option>
             <option value="en personne">en personne</option>
             <option value="e-mail">e-mail</option>
             <option value="Linkedin">Linkedin</option>
             <option value="recommandation">recommandation</option>
             <option value="sollicitation directe">sollicitation directe</option>
         </select>
-        <select name="type de contrat" id="">
+
+        <label for="intitule_du_poste">Intitulé du poste</label>
+        <input type="text" name="intitule_du_poste">
+        
+        <select name="type_de_contrat" id="">
+            <option value="type de contrat">type de contrat</option>
             <option value="stage">stage</option>
             <option value="CDD">CDD</option>
             <option value="CDI">CDI</option>
         </select>
-
+        
         <label for="email">email</label>
-        <input type="text" name="email">
+        <input type="email" name="email">
 
         <label for="commentaires">commentaires</label>
-        <input type="text" name="commentaires">
+        <textarea name="commentaires" id="commentaires"></textarea>
 
-        <button type="submit">Envoyer</button>
+        <button type="submit">Ajouter</button>
     </form>
 </body>
 </html>
+

@@ -4,6 +4,9 @@ require_once("connect.php");
 
 $sql = "SELECT * FROM stage";
 
+$query = $db->prepare($sql);
+$query->execute();
+$stage = $query-> fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +14,8 @@ $sql = "SELECT * FROM stage";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -29,6 +34,7 @@ $sql = "SELECT * FROM stage";
         <td>type de contrat</td>
         <td>email</td>
         <td>commentaires</td>
+        <td>Actions</td>
     </thead>
     <tbody>
     <?php
@@ -42,14 +48,20 @@ $sql = "SELECT * FROM stage";
             <td><?=$stage["date_de_relance"]?></td>
             <td><?=$stage["type_de_postulation"]?></td>
             <td><?=$stage["methode_de_postulation"]?></td>
-            <td><?=$stage["intitulé_du_poste"]?></td>
+            <td><?=$stage["intitule_du_poste"]?></td>
             <td><?=$stage["type_de_contrat"]?></td>
             <td><?=$stage["email"]?></td>
             <td><?=$stage["commentaires"]?></td>
+            <td>
+                <a href="update.php?id=<?= $stage['id']?>">Modifier</a>
+                <a href="delete.php?id=<?= $stage['id']?>"><i class="fa-solid fa-trash-can"></i></a>
+            </td>
         </tr>
         <?php
         }
         ?>
+        
     <tbody>
 </body>
 </html>
+
