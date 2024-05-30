@@ -1,6 +1,7 @@
 
 <?php
 require_once("connect.php");
+include_once("navbar.php");
 
 $sql = "SELECT * FROM stage";
 
@@ -58,7 +59,7 @@ $stage = $query-> fetchAll(PDO::FETCH_ASSOC);
             </td>
         </tr>
         <?php
-        endforeach; // remplace l'accolade fermante
+        }// remplace l'accolade fermante
         ?>
         
     <tbody>

@@ -1,6 +1,6 @@
 <?php
 const DBHOST = "db"; // fait régérence à ce qu'on a écrit dans le docker-compose.yml
-const DBNAME= "tableau-stagee-php";
+const DBNAME= "tableau-stage-php";
 const DBUSER= 'test';
 const DBPASS= "test";
 
