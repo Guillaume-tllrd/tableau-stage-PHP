@@ -1,3 +1,7 @@
+<?php
+session_start();
+// NE PAS OUBLIER LE SESSION START pour maintenir la session
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +10,7 @@
     <title>Document</title>
 </head>
 <body>
+<?php include("navbar.php"); ?>
     <form action="create.php" method="post">
 
         <select name="statut_de_la_recherche" id="statut">
@@ -52,14 +57,19 @@
             <option value="CDD">CDD</option>
             <option value="CDI">CDI</option>
         </select>
-        
+      
         <label for="email">email</label>
         <input type="email" name="email">
 
         <label for="commentaires">commentaires</label>
         <textarea name="commentaires" id="commentaires"></textarea>
 
+        <label for="user_id"></label>
+        <input type="hidden" name="user_id" id="user_id" value="<?= ($_SESSION['user']['id']) ?>">
         <button type="submit">Ajouter</button>
+       <!-- <?php echo "<pre>";
+       var_dump($_SESSION['user']['id']);
+       echo "</pre>" ;?> -->
     </form>
 </body>
 </html>

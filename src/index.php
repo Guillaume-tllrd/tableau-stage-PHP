@@ -1,11 +1,17 @@
-
 <?php
+session_start();
 require_once("connect.php");
-include_once("navbar.php");
 
-$sql = "SELECT * FROM stage";
+if(!isset($_SESSION["user"])){
+    header("Location: connexion.php");
+    exit;
+}
+
+// faire attention à bien mettre le include en dessous du header sinon MESSAGE D'ERREUR
+$sql = "SELECT * FROM stage WHERE user_id =:id";
 
 $query = $db->prepare($sql);
+$query ->bindValue(":id", $_SESSION['user']['id'], PDO::PARAM_INT);
 $query->execute();
 $stage = $query-> fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -20,7 +26,8 @@ $stage = $query-> fetchAll(PDO::FETCH_ASSOC);
     <title>Document</title>
 </head>
 <body>
-    <h1>Tableau de suivi de recherche de stage</h1>
+<?= include("navbar.php")?>
+    <h1>Tableau de suivi de recherche de stage de <?=$_SESSION['user']['pseudo'] ?></h1>
     <table>
     <a href="form.php">Ajouter un nouveau stage</a>
     <thead>
@@ -63,6 +70,7 @@ $stage = $query-> fetchAll(PDO::FETCH_ASSOC);
         ?>
         
     <tbody>
+        <img src="../" alt="">
 </body>
 </html>
 

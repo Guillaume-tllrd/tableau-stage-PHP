@@ -21,7 +21,7 @@ if(!empty($_POST)){
 
         $user = $query->fetch();
 
-        if(!user){
+        if(!$user){
             die("L'utilisateur et/ou le mot de passe est incorrect");
         }
 
@@ -35,13 +35,16 @@ if(!empty($_POST)){
         // on va donc pouvoir ouvrir la session ou "connecter l'utilisateur"
         $_SESSION["user"] = [
             "id" => $user["id"],
-            "pseudo" => $user["username"],
-            "email" => ["email"],
+            "pseudo"=>$user["pseudo"],
+            "email" => $user["email"],
         ];
     // une fois que l'on a fait ça, on est connecté on peut donc redirigé vers une autre page (par ex l'index)
         header("Location: index.php");
+        exit;
+    } else {
+        die("le formulaire est incomplet");
     }
-}
+} 
 ?>
 
 
@@ -50,22 +53,23 @@ if(!empty($_POST)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
     <h1>Connexion</h1>
 
-    <form action="" method="post">
+    <form action="connexion.php" method="post">
     <div>
         <label for="email">Email :</label>
         <input type="email" name="email" id="email">
     </div>
     <div>
-        <label for="password">Mot de passe:</label>
-        <input type="password" name="password" id="password">
+        <label for="pass">Mot de passe:</label>
+        <input type="password" name="pass" id="pass">
     </div>
     <button type="submit">Me connecter</button>
+    <div><a href="inscription.php">Cliquez ici si vous n'êtes pas enregistré</a></div>
     </form>
-    <a href="inscription.php">Cliquez ici si vous n'êtes pas enregistré</a>
 </body>
 </html>

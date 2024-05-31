@@ -1,6 +1,29 @@
-table {
+nav {
+    /* display: flex; */
     /* border: 1px solid red; */
 }
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+li{
+    list-style-type: none;
+    padding: 5px;
+}
 h1 {
-    /* color:red; */
+    text-align: center;
+}
+table {
+    /* border: 1px solid red; */
+    width: 1700px;
+    margin: 0 auto;
+}
+body {
+    height: 100vh;
+    background-image: url(../img/apple-1834328_1920.jpg) cover/center;
+}
+
+form {
+   justify-content: center;
 }

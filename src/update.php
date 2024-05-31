@@ -1,4 +1,5 @@
 <?php
+session_start();
 if ($_POST) { // Vérifie si le formulaire a été soumis en utilisant la méthode POST
     if (
         isset($_POST["id"]) && !empty($_POST["id"]) && // Vérifie si l'ID est défini et non vide
@@ -75,6 +76,7 @@ $stage = $query->fetch();
     <title>Modification de l'offre</title>
 </head>
 <body>
+    <?php include("navbar.php"); ?>
     <h1>Modifier l'offre de <?= $stage["nom_de_lentreprise"]?> pour le poste de <?=$stage["intitule_du_poste"]?></h1>
    
     <form action="create.php" method="post">
